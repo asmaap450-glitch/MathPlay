@@ -1,0 +1,7 @@
+<Solution>
+  <Configurations>
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="MathPlay/MathPlay.vcxproj" Id="0a6febb2-5642-4558-893b-7a60ed584d39" />
+</Solution>
