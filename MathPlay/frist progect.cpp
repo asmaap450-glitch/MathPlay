@@ -13,8 +13,8 @@ struct stQuestion {
     enOprator Operatortype;
     int Num1;
     int Num2;
-    int correctAnswer = 0;
-    int userAnswer = 0;
+    float correctAnswer = 0;
+    float userAnswer = 0;
     bool Answerresult = false;
 };
 
@@ -69,7 +69,7 @@ int randomNumber(int from, int to) {
     return rand() % (to - from + 1) + from;
 }
 
-int SimpelCalculator(int num1, int num2, enOprator optype) {
+float SimpelCalculator(int num1, int num2, enOprator optype) {
     switch (optype) {
     case enOprator::add:
         return num1 + num2;
@@ -78,7 +78,7 @@ int SimpelCalculator(int num1, int num2, enOprator optype) {
     case enOprator::mul:
         return num1 * num2;
     case enOprator::Div:
-        return num1 / num2;
+        return (float)num1 / (float)num2;
     default:
         return 0;
     }
@@ -156,10 +156,12 @@ void AskAndCorrectqQuestionAnswer(stQuizz& Quizz) {
         cout << getopratortext(Quizz.Questionslist[howQuestion].Operatortype) << "";
         cout << Quizz.Questionslist[howQuestion].Num2 << " \n ";
         cout << "__________________\n";
-        // even here
+        // even here           
+       // cout << "(Note: Enter whole number only, ignore decimals)\n";
+
         cin >> Quizz.Questionslist[howQuestion].userAnswer;
-        // fanction correct answer for teacher 
-        if (Quizz.Questionslist[howQuestion].userAnswer == Quizz.Questionslist[howQuestion].correctAnswer) {
+ // to know if the answer is correct or not we will use abs to ignore the negative value with takeing decimal
+        if (abs(Quizz.Questionslist[howQuestion].userAnswer - Quizz.Questionslist[howQuestion].correctAnswer) < 0.1) {
             cout << "correst (:\n";
             Quizz.numofcorrectAnswer++;
             screencollor(true);
